@@ -29,7 +29,7 @@ DEBUG = True
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 SECRET_KEY = os.environ.get('SECRET_KEY', 'votre_clef_secrete')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mbike-app-2.onrender.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
