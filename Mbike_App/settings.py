@@ -21,15 +21,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-9vs+!hj&y8p!vl*tas#ei)r&av8vm)c@u^_cc%-tvtq$^h9qr9'
+SECRET_KEY = os.environ.get("SECRET_KEY", "django-insecure-default-key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-DEBUG = os.environ.get('DEBUG', 'True') == 'True'
-SECRET_KEY = os.environ.get('SECRET_KEY', 'votre_clef_secrete')
+DEBUG = os.environ.get("DEBUG") == "True"
 
-ALLOWED_HOSTS = ['mbike-app-2.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'mbike-app.onrender.com']
+
 
 
 # Application definition
@@ -143,4 +142,4 @@ MEDIA_ROOT = BASE_DIR / "media"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Dossier où collectstatic copiera tous les fichiers statiques pour la production
-STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')

@@ -1,1 +1,1 @@
-web: gunicorn Mbike_App.wsgi
+web: gunicorn Mbike_App.wsgi --log-file -
