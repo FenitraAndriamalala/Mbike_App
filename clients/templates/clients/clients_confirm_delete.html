@@ -1,0 +1,12 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+<h2>Confirmer la suppression du client : {{ client.nom }} {{ client.prenom }}</h2>
+<form method="post">
+    {% csrf_token %}
+    <p>Voulez-vous vraiment supprimer ce client ?</p>
+    <button type="submit">Oui, supprimer</button>
+    <a href="{% url 'clients_list' %}">Annuler</a>
+</form>
+{% endblock %}

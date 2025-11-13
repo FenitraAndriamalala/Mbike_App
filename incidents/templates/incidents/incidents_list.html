@@ -1,0 +1,43 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+<h2>Liste des incidents</h2>
+<a href="{% url 'incidents_add' %}">Ajouter un incident</a>
+<table border="1" style="width:100%; text-align:center; margin-top:10px;">
+    <tr>
+        <th>Date</th>
+        <th>Type</th>
+        <th>Détails</th>
+        <th>Client</th>
+        <th>Service concerné</th>
+        <th>Découvreur</th>
+        <th>Action interne</th>
+        <th>Action client</th>
+        <th>Procédure à suivre</th>
+        <th>Action corrective</th>
+        <th>Remarque</th>
+        <th>Actions</th>
+    </tr>
+    {% for i in incidents %}
+    <tr>
+        <td>{{ i.date }}</td>
+        <td>{{ i.type_incident }}</td>
+        <td>{{ i.details }}</td>
+        <td>{{ i.client }}</td>
+        <td>{{ i.service_concerne }}</td>
+        <td>{{ i.decouvreur }}</td>
+        <td>{{ i.action_interne }}</td>
+        <td>{{ i.action_client }}</td>
+        <td>{{ i.procedure_suivre }}</td>
+        <td>{{ i.action_corrective }}</td>
+        <td>{{ i.remarque }}</td>
+        <td>
+            <a href="{% url 'incidents_edit' i.pk %}">Modifier</a> |
+            <a href="{% url 'incidents_delete' i.pk %}">Supprimer</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<a href="{% url 'home' %}">Retour à l'accueil</a>
+{% endblock %}

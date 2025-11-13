@@ -1,0 +1,35 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+<h2>Suivi hebdomadaire des vélos</h2>
+<a href="{% url 'suivi_add' %}">Ajouter suivi semaine</a>
+<table border="1" style="width:100%; text-align:center; margin-top:10px;">
+    <tr>
+        <th>Vélo</th>
+        <th>Client</th>
+        <th>Semaine début</th>
+        <th>Semaine fin</th>
+        <th>Parcours</th>
+        <th>CA</th>
+        <th>KMS</th>
+        <th>Actions</th>
+    </tr>
+    {% for s in suivis %}
+    <tr>
+        <td>{{ s.velo }}</td>
+        <td>{{ s.client }}</td>
+        <td>{{ s.semaine_debut }}</td>
+        <td>{{ s.semaine_fin }}</td>
+        <td>{{ s.parcours }}</td>
+        <td>{{ s.ca }}</td>
+        <td>{{ s.kms }}</td>
+        <td>
+            <a href="{% url 'suivi_edit' s.pk %}">Modifier</a> |
+            <a href="{% url 'suivi_delete' s.pk %}">Supprimer</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<a href="{% url 'home' %}">Retour à l'accueil</a>
+{% endblock %}

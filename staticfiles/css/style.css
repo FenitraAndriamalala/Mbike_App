@@ -1,0 +1,144 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0 20px;
+    background-color: #f2f2f2;
+    box-sizing: border-box;
+}
+
+/* Titre principal */
+header h1 {
+    text-align: center;
+    margin: 20px 0;
+    color: #fff;
+    background-color: #007BFF;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+/* ---- MENU HAUT ---- */
+nav {
+    margin-top: 20px;
+    width: 100%;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;          /* permet de passer à la ligne */
+    justify-content: center;  /* centre les boutons */
+    align-items: center;
+    gap: 15px;                /* espace entre les boutons */
+}
+
+nav li {
+    display: inline-block;
+}
+
+nav li a {
+    display: inline-block;
+    text-decoration: none;
+    padding: 12px 18px;
+    background-color: #28a745;
+    color: white;
+    border-radius: 6px;
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap;      /* évite les retours à la ligne dans un bouton */
+    transition: background-color 0.3s;
+}
+
+nav li a:hover {
+    background-color: #218838;
+}
+
+/* ---- CONTENU ---- */
+main {
+    margin-top: 40px;
+    text-align: center;
+}
+
+main h2 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+main p {
+    margin-bottom: 20px;
+}
+
+/* ---- LIENS RAPIDES EN BAS ---- */
+.quick-links {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+}
+
+.quick-links li a {
+    text-decoration: none;
+    padding: 10px 15px;
+    background-color: #17a2b8;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    width: 220px;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.quick-links li a:hover {
+    background-color: #138496;
+}
+
+/* ---- TETO LE FARANY ---- */
+
+.table-velos {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.table-velos th, .table-velos td {
+    border: 1px solid #ccc;
+    padding: 8px;
+}
+
+.table-velos th {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+.table-velos tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.velo-image {
+    border-radius: 5px;
+    transition: transform 0.2s;
+}
+
+.velo-image:hover {
+    transform: scale(2); /* zoom léger au survol */
+}
+
+.btn-add, .btn-return {
+    display: inline-block;
+    margin: 10px 0;
+    padding: 8px 15px;
+    background-color: #28a745;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn-add:hover, .btn-return:hover {
+    background-color: #218838;
+}

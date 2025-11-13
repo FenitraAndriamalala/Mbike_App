@@ -1,0 +1,39 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+<h2>Liste des anomalies</h2>
+<a href="{% url 'anomalies_add' %}">Ajouter une anomalie</a>
+<table border="1" style="width:100%; text-align:center; margin-top:10px;">
+    <tr>
+        <th>Date</th>
+        <th>Nombre de vélos</th>
+        <th>Numéro vélos utilisés</th>
+        <th>Kms trajet</th>
+        <th>Heure départ</th>
+        <th>Heure arrivée</th>
+        <th>Remarque</th>
+        <th>Actions</th>
+    </tr>
+    {% for a in anomalies %}
+    <tr>
+        <td>{{ a.date }}</td>
+        <td>{{ a.nombre_velos }}</td>
+        <td>
+            {% for v in a.velos_utilises.all %}
+                {{ v }}{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+        </td>
+        <td>{{ a.km_trajet }}</td>
+        <td>{{ a.heure_depart }}</td>
+        <td>{{ a.heure_arrivee }}</td>
+        <td>{{ a.remarque }}</td>
+        <td>
+            <a href="{% url 'anomalies_edit' a.pk %}">Modifier</a> |
+            <a href="{% url 'anomalies_delete' a.pk %}">Supprimer</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<a href="{% url 'home' %}">Retour à l'accueil</a>
+{% endblock %}

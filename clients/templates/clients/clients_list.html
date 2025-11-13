@@ -1,0 +1,33 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+<h2>Liste des clients</h2>
+<a href="{% url 'clients_add' %}">Ajouter un client</a>
+<table border="1" style="width:100%; text-align:center; margin-top:10px;">
+    <tr>
+        <th>Numéro client</th>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Mail</th>
+        <th>Téléphone</th>
+        <th>Remarque</th>
+        <th>Actions</th>
+    </tr>
+    {% for client in clients %}
+    <tr>
+        <td>{{ client.numero_client }}</td>
+        <td>{{ client.nom }}</td>
+        <td>{{ client.prenom }}</td>
+        <td>{{ client.mail }}</td>
+        <td>{{ client.telephone }}</td>
+        <td>{{ client.remarque }}</td>
+        <td>
+            <a href="{% url 'clients_edit' client.pk %}">Modifier</a> |
+            <a href="{% url 'clients_delete' client.pk %}">Supprimer</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<a href="{% url 'home' %}">Retour à l'accueil</a>
+{% endblock %}

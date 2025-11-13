@@ -1,0 +1,45 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+<h2>Liste des locations</h2>
+<a href="{% url 'locations_add' %}">Programmer une location</a>
+<table border="1" style="width:100%; text-align:center; margin-top:10px;">
+    <tr>
+        <th>Date</th>
+        <th>Type de location</th>
+        <th>Client</th>
+        <th>Nombre de participants</th>
+        <th>Vélo</th>
+        <th>Taille</th>
+        <th>Circuit prévu</th>
+        <th>Localisation vélo</th>
+        <th>Remarque</th>
+        <th>Clé</th>
+        <th>Km trajet</th>
+        <th>Guide</th>
+        <th>Actions</th>
+    </tr>
+    {% for location in locations %}
+    <tr>
+        <td>{{ location.date }}</td>
+        <td>{{ location.type_location }}</td>
+        <td>{{ location.client }}</td>
+        <td>{{ location.nombre_participants }}</td>
+        <td>{{ location.velo }}</td>
+        <td>{{ location.taille }}</td>
+        <td>{{ location.circuit_prevu }}</td>
+        <td>{{ location.localisation_velo }}</td>
+        <td>{{ location.remarque }}</td>
+        <td>{{ location.clef }}</td>
+        <td>{{ location.km_trajet }}</td>
+        <td>{{ location.guide }}</td>
+        <td>
+            <a href="{% url 'locations_edit' location.pk %}">Modifier</a> |
+            <a href="{% url 'locations_delete' location.pk %}">Supprimer</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<a href="{% url 'home' %}">Retour à l'accueil</a>
+{% endblock %}

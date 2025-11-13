@@ -1,0 +1,30 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>MBIKE MADAGASCAR</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <h1>MBIKE MADAGASCAR</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'velos_list' %}">Liste des vélos</a></li>
+                <li><a href="{% url 'clients_list' %}">Liste des clients</a></li>
+                <li><a href="{% url 'locations_list' %}">Organisation location</a></li>
+                <li><a href="{% url 'ammortissements_list' %}">Amortissement vélos</a></li>
+                <li><a href="{% url 'suivi_list' %}">Suivi hebdomadaire</a></li>
+                <li><a href="{% url 'anomalies_list' %}">Anomalies</a></li>
+                <li><a href="{% url 'incidents_list' %}">Incidents</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>

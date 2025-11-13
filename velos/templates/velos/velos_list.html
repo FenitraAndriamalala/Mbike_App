@@ -1,0 +1,60 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+<h2>Liste des vélos</h2>
+
+<a href="{% url 'velos_add' %}" class="btn-add">Ajouter un vélo</a>
+
+<table class="table-velos">
+    <thead>
+        <tr>
+            <th>Numéro</th>
+            <th>Type du vélo</th>
+            <th>Désignation</th>
+            <th>Taille</th>
+            <th>Remarque</th>
+            <th>Track</th>
+            <th>1/2 journée</th>
+            <th>1 journée</th>
+            <th>Emplacement</th>
+            <th>Image</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for velo in velos %}
+        <tr>
+            <td>{{ velo.numero }}</td>
+            <td>{{ velo.type_velo }}</td>
+            <td>{{ velo.designation }}</td>
+            <td>{{ velo.taille }}</td>
+            <td>{{ velo.remarque }}</td>
+            <td>{{ velo.track|yesno:"Oui,Non" }}</td>
+            <td>{{ velo.demi_journee }}</td>
+            <td>{{ velo.journee }}</td>
+            <td>{{ velo.emplacement }}</td>
+            <td>
+                {% if velo.image %}
+                    <a href="{{ velo.image.url }}" target="_blank">
+                        <img src="{{ velo.image.url }}" width="50" class="velo-image">
+                    </a>
+                {% else %}
+                    -
+                {% endif %}
+            </td>
+            <td>
+                <a href="{% url 'velos_edit' velo.pk %}">Modifier</a> |
+                <a href="{% url 'velos_delete' velo.pk %}">Supprimer</a>
+            </td>
+        </tr>
+    {% empty %}
+        <tr>
+            <td colspan="11">Aucun vélo enregistré.</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<a href="{% url 'home' %}" class="btn-return">Retour à l'accueil</a>
+{% endblock %}

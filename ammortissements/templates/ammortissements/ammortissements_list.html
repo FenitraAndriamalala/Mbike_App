@@ -1,0 +1,37 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+<h2>Ammortissement vélos</h2>
+<a href="{% url 'ammortissements_add' %}">Ajouter vélo à ammortir</a>
+<table border="1" style="width:100%; text-align:center; margin-top:10px;">
+    <tr>
+        <th>Vélo</th>
+        <th>Année</th>
+        <th>Prix neuf</th>
+        <th>KMS total</th>
+        <th>CA total</th>
+        <th>Prix CA ammorti</th>
+        <th>Décote</th>
+        <th>Amortissement final</th>
+        <th>Actions</th>
+    </tr>
+    {% for a in ammortissements %}
+    <tr>
+        <td>{{ a.velo }}</td>
+        <td>{{ a.annee }}</td>
+        <td>{{ a.prix_neuf }}</td>
+        <td>{{ a.kms_total }}</td>
+        <td>{{ a.ca_total }}</td>
+        <td>{{ a.prix_ca_ammorti }}</td>
+        <td>{{ a.decote }}</td>
+        <td>{{ a.amortissement_final }}</td>
+        <td>
+            <a href="{% url 'ammortissements_edit' a.pk %}">Modifier</a> |
+            <a href="{% url 'ammortissements_delete' a.pk %}">Supprimer</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<a href="{% url 'home' %}">Retour à l'accueil</a>
+{% endblock %}

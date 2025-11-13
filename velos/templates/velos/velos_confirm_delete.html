@@ -1,0 +1,12 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+<h2>Confirmer la suppression du vélo : {{ velo.numero }}</h2>
+<form method="post">
+    {% csrf_token %}
+    <p>Voulez-vous vraiment supprimer ce vélo ?</p>
+    <button type="submit">Oui, supprimer</button>
+    <a href="{% url 'velos_list' %}">Annuler</a>
+</form>
+{% endblock %}
